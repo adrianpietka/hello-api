@@ -10,8 +10,3 @@ docker run --log-driver=awslogs \
     -i \
     -p 3000:3000 \
     devenv/hello-api:latest
-
-docker run \
-    -i \
-    -p 3000:3000 \
-    devenv/hello-api:latest
