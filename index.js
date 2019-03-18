@@ -23,7 +23,7 @@ fastify.get('/info', async () => {
     description: 'Additional important description',
     userIds: [100, 200, 300]
   }
-  fastify.log.info('execute /info route', info)
+  fastify.log.info(info, 'execute /info route')
   return 'response for info'
 })
 
@@ -41,7 +41,7 @@ fastify.get('/fatal', async () => {
   try {
     throw new Error('Whoops!')
   } catch (e) {
-    fastify.log.fatal('execute /fatal route', e)
+    fastify.log.fatal(e, 'execute /fatal route')
   }
 
   return 'response for fatal'
@@ -57,5 +57,6 @@ const start = async () => {
   }
 }
 
-process.on('SIGINT', () => process.exit());
+process.on('SIGINT', () => process.exit())
+
 start()
