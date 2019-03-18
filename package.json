@@ -1,13 +1,17 @@
 {
   "name": "hello-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "App for testing Docker logs for different outputs",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/adrianpietka/hello-api.git"
+  },
+  "author": "Adrian Piętka <adrian@devenv.pl> (https://devenv.pl/)",
   "license": "MIT",
   "dependencies": {
     "fastify": "^1.13.1"

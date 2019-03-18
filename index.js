@@ -1,15 +1,50 @@
 const fastify = require('fastify')({
-    logger: true
+  logger: true
 })
 
-fastify.get('/', async (request, reply) => {
-    fastify.log.info('execute / route')
-    return { hello: 'world' }
+fastify.get('/', async () => {
+  return { errorLevels: fastify.log.levels }
 })
 
-fastify.get('/test', async (request, reply) => {
-    fastify.log.info('execute /test route')
-    return 'test response'
+fastify.get('/trace', async () => {
+  fastify.log.trace('execute /trace route')
+  return 'response for trace'
+})
+
+fastify.get('/debug', async () => {
+  fastify.log.debug('execute /debug route')
+  return 'response for debug'
+})
+
+fastify.get('/info', async () => {
+  const info = {
+    currentTimestamp: +new Date(),
+    sequenceId: 100,
+    description: 'Additional important description',
+    userIds: [100, 200, 300]
+  }
+  fastify.log.info('execute /info route', info)
+  return 'response for info'
+})
+
+fastify.get('/warn', async () => {
+  fastify.log.warn('execute /warn route')
+  return 'response for warn'
+})
+
+fastify.get('/error', async () => {
+  fastify.log.error('execute /error route')
+  return 'response for error'
+})
+
+fastify.get('/fatal', async () => {
+  try {
+    throw new Error('Whoops!')
+  } catch (e) {
+    fastify.log.fatal('execute /fatal route', e)
+  }
+
+  return 'response for fatal'
 })
 
 const start = async () => {
